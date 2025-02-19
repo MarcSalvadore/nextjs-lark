@@ -1,0 +1,13 @@
+.parent {
+    display: flex; /* Arrange items in a row */
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Space between text and button */  
+}
+
+.text {
+    font-size: 1.3rem; /* Adjust font size */
+    font-weight: 600;
+    margin: 0; /* Remove extra margins */
+    display: flex;
+    align-items: center; /* Ensures text aligns properly */
+}
