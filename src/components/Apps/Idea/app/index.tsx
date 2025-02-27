@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { 
     Card, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, 
-    TablePagination, IconButton, Button, Fab, CircularProgress 
+    TablePagination, IconButton, Button, Fab, CircularProgress, Skeleton, Box
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
@@ -160,11 +160,22 @@ export default function Home() {
                     </TableHead>
                     <TableBody>
                         {loading ? (
-                            <TableRow>
-                                <TableCell colSpan={6} align="center">
-                                    <CircularProgress />
-                                </TableCell>
-                            </TableRow>
+                            // Skeleton Loading for the table rows
+                            [...Array(rowsPerPage)].map((_, index) => (
+                                <TableRow key={index}>
+                                    <TableCell><Skeleton variant="text" width="100px" /></TableCell>
+                                    <TableCell><Skeleton variant="text" width="150px" /></TableCell>
+                                    <TableCell><Skeleton variant="text" width="200px" /></TableCell>
+                                    <TableCell><Skeleton variant="text" width="80px" /></TableCell>
+                                    <TableCell><Skeleton variant="text" width="50px" /></TableCell>
+                                    <TableCell>
+                                        <Box display="inline-flex" gap={1}>
+                                            <Skeleton variant="circular" width={24} height={24} />
+                                            <Skeleton variant="circular" width={24} height={24} />
+                                        </Box>
+                                    </TableCell>
+                                </TableRow>
+                            ))
                         ) : (
                             records.map((record) => (
                                 <TableRow key={record.id}>
